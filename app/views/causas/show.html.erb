@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <div class="page-header">
+  	<h1><%= @causa.titulo %>	</h1>
+	</div>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @causa.descricao %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @causa.user.email %>
+</p>
+
+<p>
+  <strong>Foto:</strong>
+  <%= #@causa.foto 
+%>
+	<%= image_tag @causa.foto, class: 'foto'%>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @causa.cidade %>
+</p>
+
+	<%= #link_to "Apoiar", new_causa_apoio_path 
+%>
+	<%= link_to 'Comentários', causa_comentarios_path(@causa), class: "btn btn-primary" %>
+
+<br/>
+
+
+<%= link_to 'Edit', edit_causa_path(@causa) %> |
+<%= link_to 'Back', causas_path %>

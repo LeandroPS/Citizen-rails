@@ -1,0 +1,10 @@
+<%= form_tag(causas_path, method: "get") do %>
+ 	<%= label_tag(:ccidade, "Cidade:") %>
+	<%= #select :ccidade, cidade.map{ |u| [u.nome, u.id] } 
+	%>
+<%= puts Cidade.all %>
+
+	<%= select_tag :ccidade, options_for_select([['Ambos','A'],['Masculino','M'], ['Feminino','F']],selected:@psexo)
+	%>
+ <%= submit_tag 'Filtrar' %>
+<% end %>

@@ -1,0 +1,54 @@
+<%= form_for(causa) do |f| %>
+  <% if causa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(causa.errors.count, "error") %> prohibited this causa from being saved:</h2>
+
+      <ul>
+      <% causa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %>
+    <%= f.text_field :titulo, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descricao %>
+    <%= f.text_field :descricao, class: 'form-control' %>
+  </div>
+
+  <div>
+		<%= f.label :foto %>
+		<%= image_tag @causa.foto, class: 'foto' if @causa.foto? %>
+		<%= f.file_field :foto, label: 'Foto' , input_html: {accept: ('application/jpg') } %>
+		<br/>
+  </div>
+
+  <div class="field">
+    <%= f.label :data %>
+    <%= f.text_field :data, class: 'datepicker' %>
+  </div>
+
+	<div class="field">
+		<%= f.label :cidade %>
+		<%= #f.select :cidade_id, Cidade.all 
+%>
+		<%= f.select :cidade_id, Cidade.all.map{ |u| [u.nome, u.id] } %>
+		<%= link_to "Nova cidade", new_cidade_path %>
+	</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.datepicker').datepicker({format: 'dd-mm-yyyy'});
+	});
+
+</script>

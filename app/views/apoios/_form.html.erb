@@ -1,0 +1,27 @@
+<%= form_for(apoio) do |f| %>
+  <% if apoio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(apoio.errors.count, "error") %> prohibited this apoio from being saved:</h2>
+
+      <ul>
+      <% apoio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :causa_id %>
+    <%= f.text_field :causa_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

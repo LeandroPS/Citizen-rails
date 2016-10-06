@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Apoios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Causa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apoios.each do |apoio| %>
+      <tr>
+        <td><%= apoio.user %></td>
+        <td><%= apoio.causa %></td>
+        <td><%= link_to 'Show', apoio %></td>
+        <td><%= link_to 'Edit', edit_apoio_path(apoio) %></td>
+        <td><%= link_to 'Destroy', apoio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Apoio', new_apoio_path %>

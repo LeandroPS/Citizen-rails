@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>Causas</h1>
+
+<hr/>
+ <%= render 'formbusca', cidades: @cidades %>
+<hr/>
+	<%= select :ccidade, Cidade.all.map{ |u| [u.nome, u.id] } 
+	%>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Descricao</th>
+      <th>Usuario</th>
+      <th>Foto</th>
+      <th>Cidade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @causas.each do |causa| %>
+      <tr>
+        <td><%= causa.titulo %></td>
+        <td><%= causa.descricao %></td>
+        <td><%= causa.user.email %></td>
+        <td><%= causa.foto %></td>
+        <td><%= causa.cidade %></td>
+        <td><%= link_to 'Show', causa %></td>
+        <td><%= link_to 'Edit', edit_causa_path(causa) %></td>
+        <td><%= link_to 'Destroy', causa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @funcionarios, previous_label: "Anterior", next_label: "Próxima" %>
+<br>
+
+<%= link_to 'Nova Causa', new_causa_path, class: "btn btn-success" %>
+
+<%= link_to " Relatorio", listar_causas_path(@causa, :format =>'pdf'), target: '_blank', class: "glyphicon glyphicon-print btn btn-primary" %>

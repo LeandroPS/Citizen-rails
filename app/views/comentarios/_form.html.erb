@@ -1,0 +1,34 @@
+<%= #form_for(@comentario) do |f| 
+	%>
+<%= form_for(new_causa_comentario_path) do |f| %>
+  <% if comentario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comentario.errors.count, "error") %> prohibited this comentario from being saved:</h2>
+
+      <ul>
+      <% comentario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :causa_id %>
+    <%= f.text_field :causa_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :data %>
+    <%= f.date_select :data %>
+  </div>
+
+  <div class="field">
+    <%= f.label :comentario %>
+    <%= f.text_field :comentario %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
